@@ -28,7 +28,7 @@
       methods : {
           openMenu () {
             this.$emit("openMenu")
-            let width = this.$attrs.width ? this.$attrs.width + 'px' : '300px';
+            let width = this.$attrs.width ? this.$attrs.width : '300px';
             document.getElementById('sideNav').style.overflowY = 'hidden';
             document.body.style.overflowX = 'hidden';
             document.getElementById('sideNav').style.transition='0.5s';

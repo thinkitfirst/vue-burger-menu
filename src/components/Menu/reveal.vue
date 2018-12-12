@@ -22,7 +22,7 @@
         },
         push() {
           this.openMenu()
-          let width = this.$attrs.width ? this.$attrs.width + 'px' : '300px';
+          let width = this.$attrs.width ? this.$attrs.width : '300px';
 
           document.body.style.overflowX = 'hidden';
 
