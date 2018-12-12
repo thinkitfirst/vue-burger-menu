@@ -34,7 +34,6 @@
         "less-loader": "^4.1.0",
         "vue-template-compiler": "^2.5.17"
     },
-    "postinstall": "npm run build",
     "main": "./dist/vue-burger-menu.common.js",
     "license": "MIT",
     "eslintConfig": {
