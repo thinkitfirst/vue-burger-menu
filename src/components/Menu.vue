@@ -9,7 +9,7 @@
                 </span>
             </span>
             <div class="bm-search-button search-style" @click="closeMenu" :class="{ hidden: !searchIcon }">
-              <slot name="search"></slot>
+              <slot name="searchbtn"></slot>
             </div>
         </div>
 
