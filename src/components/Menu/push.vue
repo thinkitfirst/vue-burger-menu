@@ -2,9 +2,9 @@
     <div>
         <Menu v-bind="this.$attrs" @openMenu="push" @closeMenu="pull">
             <slot></slot>
-            <div slot="search">
+            <template slot="search">
               <slot name="searchbtn"></slot>
-            </div>
+            </template>
         </Menu>
     </div>
 </template>
