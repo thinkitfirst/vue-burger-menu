@@ -8,9 +8,9 @@
                 <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
                 </span>
             </span>
-            <span class="bm-search-button search-style" @click="closeMenu" :class="{ hidden: !searchIcon }">
-              <slot name="search-icon"></slot>
-            </span>
+            <div class="bm-search-button search-style" @click="closeMenu" :class="{ hidden: !searchIcon }">
+              <slot name="search"></slot>
+            </div>
         </div>
 
         <div class="bm-burger-button" @click="openMenu" :class="{ hidden: !burgerIcon }">
