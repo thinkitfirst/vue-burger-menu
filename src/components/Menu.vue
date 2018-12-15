@@ -71,7 +71,7 @@
       },
       methods: {
         toggleMenu() {
-          if (this.isSideBarOpen) {
+          if (this.isSideBarOpen === true) {
             this.closeMenu();
           } else {
             this.openMenu();
@@ -91,7 +91,7 @@
           }
           this.$nextTick(function() {
             document.getElementById('sideNav').style.width = this.width
-              ? this.width + 'px'
+              ? this.width
               : '300px';
           });
         },
