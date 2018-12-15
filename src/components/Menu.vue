@@ -8,7 +8,7 @@
                 <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
                 </span>
             </span>
-            <div class="bm-search-button search-style" @click="closeMenu" :class="{ hidden: !searchIcon }">
+            <div class="bm-search-button search-style" @click="toggleMenu" :class="{ hidden: !searchIcon }">
               <slot name="search"></slot>
             </div>
         </div>
@@ -70,6 +70,14 @@
         }
       },
       methods: {
+        toggleMenu() {
+          if (this.isSideBarOpen) {
+            this.closeMenu()
+          } else {
+            this.openMenu()
+          }
+        },
+
         openMenu() {
           this.$emit('openMenu');
           this.isSideBarOpen = true;
