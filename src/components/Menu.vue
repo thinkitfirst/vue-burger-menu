@@ -72,9 +72,9 @@
       methods: {
         toggleMenu() {
           if (this.isSideBarOpen) {
-            this.closeMenu()
+            this.closeMenu();
           } else {
-            this.openMenu()
+            this.openMenu();
           }
         },
 
