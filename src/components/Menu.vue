@@ -2,14 +2,15 @@
     <div>
         <div id="sideNav" class="bm-menu">
             <nav class="bm-item-list">
-                <slot></slot>
+              <slot v-if="isMenu" name="menu"></slot>
+              <slot v-if="isSearch" name="search"></slot>
             </nav>
             <span class="bm-cross-button cross-style" @click="closeMenu" :class="{ hidden: !crossIcon }">
                 <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
                 </span>
             </span>
             <div class="bm-search-button search-style" @click.stop="closeMenu" :class="{ hidden: !searchIcon }">
-              <slot name="search"></slot>
+              <slot name="searchButton"></slot>
             </div>
         </div>
 
@@ -31,6 +32,16 @@
         isOpen: {
           type: Boolean,
           required: false
+        },
+        isMenu: {
+          type: Boolean,
+          required: false,
+          default: true
+        },
+        isSearch: {
+          type: Boolean,
+          required: false,
+          default: false
         },
         right: {
           type: Boolean,
@@ -105,7 +116,6 @@
         },
         documentClick(e) {
           let element = document.querySelector('.bm-burger-button');
-          let searchele = document.querySelector('.bm-search-button');
           let target = e.target;
           if (
             element !== target &&

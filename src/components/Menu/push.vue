@@ -1,8 +1,13 @@
 <template>
     <div>
         <Menu v-bind="this.$attrs" @openMenu="push" @closeMenu="pull">
-            <slot></slot>
+            <template slot="menu">
+              <slot name="menuNav"></slot>
+            </template>
             <template slot="search">
+              <slot name="searchNav"></slot>
+            </template>
+            <template slot="searchButton">
               <slot name="searchbtn"></slot>
             </template>
         </Menu>
