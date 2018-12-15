@@ -8,7 +8,7 @@
                 <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
                 </span>
             </span>
-            <div class="bm-search-button search-style" @click="toggleMenu" :class="{ hidden: !searchIcon }">
+            <div class="bm-search-button search-style" @click.stop="toggleMenu" :class="{ hidden: !searchIcon }">
               <slot name="search"></slot>
             </div>
         </div>
@@ -113,10 +113,13 @@
         },
         documentClick(e) {
           let element = document.querySelector('.bm-burger-button');
+          let searchele = document.querySelector('.bm-search-button');
           let target = e.target;
           if (
             element !== target &&
             !element.contains(target) &&
+            searchele !== target &&
+            !searchele.contains(target) &&
             e.target.className !== 'bm-menu' &&
             this.isSideBarOpen
           ) {
