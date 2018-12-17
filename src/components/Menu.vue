@@ -152,6 +152,7 @@
             e.target.className !== 'bm-menu' &&
             this.isSideBarOpen
           ) {
+            console.log(target);
             this.closeMenu();
           }
         }
