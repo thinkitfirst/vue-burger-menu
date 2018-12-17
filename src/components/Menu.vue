@@ -1,11 +1,11 @@
 <template>
     <div>
         <div id="sideNav" class="bm-menu">
-          <span class="bm-cross-button cross-style" @click.stop="closeMenu" :class="{ hidden: !hasCrossIcon }">
+          <span v-if="!isSearchMenu" class="bm-cross-button cross-style" @click.stop="closeMenu" :class="{ hidden: !hasCrossIcon }">
               <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
               </span>
           </span>
-          <div v-if="hasSearchIcon" class="bm-search-button search-style" @click.stop="closeSearchMenu">
+          <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu">
             <slot name="searchHeader"></slot>
           </div>
           <nav class="bm-item-list">
