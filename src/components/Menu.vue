@@ -82,8 +82,8 @@
       },
       methods: {
         openMenu() {
-          this.isSearchMenu = false;
           this.$emit('openMenu');
+          this.isSearchMenu = false;
           this.isSideBarOpen = true;
 
           if (!this.noOverlay) {
@@ -100,15 +100,14 @@
           });
         },
         closeMenu() {
-          this.isSearchMenu = false;
           this.$emit('closeMenu');
           this.isSideBarOpen = false;
           document.body.classList.remove('bm-overlay');
           document.getElementById('sideNav').style.width = '0px';
         },
         openSearchMenu() {
-          this.isSearchMenu = true;
           this.$emit('openMenu');
+          this.isSearchMenu = true;
           this.isSideBarOpen = true;
 
           if (!this.noOverlay) {
@@ -125,7 +124,6 @@
           });
         },
         closeSearchMenu() {
-          this.isSearchMenu = true;
           this.$emit('closeMenu');
           this.isSideBarOpen = false;
           document.body.classList.remove('bm-overlay');
