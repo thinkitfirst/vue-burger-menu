@@ -167,6 +167,13 @@
         document.removeEventListener('click', this.documentClick);
       },
       watch: {
+        isSearchMenu(val) {
+          if (val) {
+            document.body.classList.add('search-nav');
+          } else {
+            document.body.classList.remove('search-nav');
+          }
+        },
         isOpen: {
           deep: true,
           immediate: true,
