@@ -104,12 +104,12 @@
           this.isSideBarOpen = false;
           document.body.classList.remove('bm-overlay');
           document.getElementById('sideNav').style.width = '0px';
-          if (document.body.classList.contains('search-nav')) {
-            document.body.classList.remove('search-nav');
+          if (this.isSearchMenu) {
+            this.$emit('closeSearchMenu');
           }
         },
         openSearchMenu() {
-          this.$emit('openMenu');
+          this.$emit('openSearchMenu');
           this.isSearchMenu = true;
           this.isSideBarOpen = true;
 
@@ -127,7 +127,7 @@
           });
         },
         closeSearchMenu() {
-          this.$emit('closeMenu');
+          this.$emit('closeSearchMenu');
           this.isSideBarOpen = false;
           document.body.classList.remove('bm-overlay');
           document.getElementById('sideNav').style.width = '0px';
@@ -170,13 +170,6 @@
         document.removeEventListener('click', this.documentClick);
       },
       watch: {
-        isSearchMenu(val) {
-          if (val) {
-            document.body.classList.add('search-nav');
-          } else {
-            document.body.classList.remove('search-nav');
-          }
-        },
         isOpen: {
           deep: true,
           immediate: true,
