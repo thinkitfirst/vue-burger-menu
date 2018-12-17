@@ -142,22 +142,40 @@
         },
         documentClick(e) {
           let element = document.querySelector('.bm-burger-button');
-          let srcBtnEle = document.querySelector('.bm-search-icon');
+          let searchEle = document.querySelector('.bm-search-icon');
           let target = e.target;
           if (
-            element !== target &&
-            !element.contains(target) &&
-            srcBtnEle !== target &&
-            !srcBtnEle.contains(target) &&
-            e.target.className !== 'bm-menu' &&
+            !this.closest(element, '.bm-item-list') &&
+            !this.closest(searchEle, '.bm-item-list') &&
+            target.className !== 'bm-menu' &&
             this.isSideBarOpen
           ) {
-            console.log(target);
             this.closeMenu();
           }
+        },
+        closest(el, selector) {
+          let matchesFn;
+          ['matches','webkitMatchesSelector','mozMatchesSelector','msMatchesSelector','oMatchesSelector'].some(function(fn) {
+              if (typeof document.body[fn] == 'function') {
+                  matchesFn = fn;
+                  return true;
+              }
+              return false;
+          });
+
+          let parent;
+
+          while (el) {
+            parent = el.parentElement;
+            if (parent && parent[matchesFn](selector)) {
+                return parent;
+            }
+            el = parent;
+          }
+
+          return null;
         }
       },
-
       mounted() {
         if (!this.disableEsc) {
           document.addEventListener('keyup', this.closeMenuOnEsc);
