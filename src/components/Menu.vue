@@ -16,7 +16,7 @@
         <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
             <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
         </div>
-        <div v-if="hasSearchIcon" class="bm-search-icon" @click.stop="openSearchMenu">
+        <div class="bm-search-icon" @click.stop="openSearchMenu" :class="{ hidden: !hasSearchIcon }">
           <component v-bind:is="searchIcon"
             class="icon">
           </component>
