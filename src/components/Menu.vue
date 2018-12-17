@@ -5,7 +5,7 @@
               <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
               </span>
           </span>
-          <div v-else class="bm-search-button search-style" @click="closeSearchMenu">
+          <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu">
             <slot name="searchHeader"></slot>
           </div>
           <nav class="bm-item-list">
@@ -16,7 +16,7 @@
         <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
             <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
         </div>
-        <div class="bm-search-icon" @click="openSearchMenu" :class="{ hidden: !hasSearchIcon }">
+        <div class="bm-search-icon" @click.stop="openSearchMenu" :class="{ hidden: !hasSearchIcon }">
           <component v-bind:is="searchIcon"
             class="icon">
           </component>
@@ -104,6 +104,9 @@
           this.isSideBarOpen = false;
           document.body.classList.remove('bm-overlay');
           document.getElementById('sideNav').style.width = '0px';
+          if (document.body.classList.contains('search-nav')) {
+            document.body.classList.remove('search-nav');
+          }
         },
         openSearchMenu() {
           this.$emit('openMenu');
