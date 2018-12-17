@@ -28,6 +28,12 @@
         closeMenu () {
             this.$emit("closeMenu")
         },
+        openSearchMenu () {
+          this.$emit('openSearchMenu')
+        },
+        closeSearchMenu () {
+          this.$emit('closeSearchMenu')
+        },
         push() {
           this.openMenu()
           let width = this.$attrs.width ? this.$attrs.width : '300px';
