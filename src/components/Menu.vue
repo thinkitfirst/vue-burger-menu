@@ -5,18 +5,18 @@
               <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
               </span>
           </span>
-          <div v-if="hasSearchIcon" class="bm-search-button search-style" @click.stop="closeMenu">
+          <div v-if="hasSearchIcon" class="bm-search-button search-style" @click.stop="closeSearchMenu">
             <slot name="searchHeader"></slot>
           </div>
           <nav class="bm-item-list">
-            <slot v-if="isMenu" name="menu"></slot>
-            <slot v-if="!isMenu" name="search"></slot>
+            <slot v-if="!isSearchMenu" name="menu"></slot>
+            <slot v-if="isSearchMenu" name="search"></slot>
           </nav>
         </div>
         <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
             <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
         </div>
-        <div v-if="hasSearchIcon" class="bm-search-icon" @click.stop="openMenu">
+        <div v-if="hasSearchIcon" class="bm-search-icon" @click.stop="openSearchMenu">
           <component v-bind:is="searchIcon"
             class="icon">
           </component>
@@ -29,7 +29,8 @@
       name: 'menubar',
       data() {
         return {
-          isSideBarOpen: false
+          isSideBarOpen: false,
+          isSearchMenu: false
         };
       },
       props: {
@@ -41,11 +42,6 @@
           type: [String],
           required: false,
           default: ''
-        },
-        isMenu: {
-          type: Boolean,
-          required: false,
-          default: true
         },
         right: {
           type: Boolean,
@@ -81,11 +77,12 @@
       },
       computed: {
         hasSearchIcon() {
-          return this.searchIcon !== ''
+          return this.searchIcon !== '';
         }
       },
       methods: {
         openMenu() {
+          this.isSearchMenu = false;
           this.$emit('openMenu');
           this.isSideBarOpen = true;
 
@@ -103,12 +100,37 @@
           });
         },
         closeMenu() {
+          this.isSearchMenu = false;
           this.$emit('closeMenu');
           this.isSideBarOpen = false;
           document.body.classList.remove('bm-overlay');
           document.getElementById('sideNav').style.width = '0px';
         },
+        openSearchMenu() {
+          this.isSearchMenu = true;
+          this.$emit('openMenu');
+          this.isSideBarOpen = true;
 
+          if (!this.noOverlay) {
+            document.body.classList.add('bm-overlay');
+          }
+          if (this.right) {
+            document.querySelector('.bm-menu').style.left = 'auto';
+            document.querySelector('.bm-menu').style.right = '0px';
+          }
+          this.$nextTick(function() {
+            document.getElementById('sideNav').style.width = this.width
+              ? this.width
+              : '300px';
+          });
+        },
+        closeSearchMenu() {
+          this.isSearchMenu = true;
+          this.$emit('closeMenu');
+          this.isSideBarOpen = false;
+          document.body.classList.remove('bm-overlay');
+          document.getElementById('sideNav').style.width = '0px';
+        },
         closeMenuOnEsc(e) {
           e = e || window.event;
           if (e.key === 'Escape' || e.keyCode === 27) {
