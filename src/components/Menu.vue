@@ -1,21 +1,25 @@
 <template>
     <div>
         <div id="sideNav" class="bm-menu">
-            <nav class="bm-item-list">
-              <slot v-if="isMenu" name="menu"></slot>
-              <slot v-if="isSearch" name="search"></slot>
-            </nav>
-            <span class="bm-cross-button cross-style" @click="closeMenu" :class="{ hidden: !crossIcon }">
-                <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
-                </span>
-            </span>
-            <div class="bm-search-button search-style" @click.stop="closeMenu" :class="{ hidden: !searchIcon }">
-              <slot name="searchButton"></slot>
-            </div>
+          <span class="bm-cross-button cross-style" @click.stop="closeMenu" :class="{ hidden: !hasCrossIcon }">
+              <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
+              </span>
+          </span>
+          <div v-if="hasSearchIcon" class="bm-search-button search-style" @click.stop="closeMenu">
+            <slot name="searchHeader"></slot>
+          </div>
+          <nav class="bm-item-list">
+            <slot v-if="isMenu" name="menu"></slot>
+            <slot v-if="!isMenu" name="search"></slot>
+          </nav>
         </div>
-
-        <div class="bm-burger-button" @click="openMenu" :class="{ hidden: !burgerIcon }">
+        <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
             <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
+        </div>
+        <div v-if="hasSearchIcon" class="bm-search-icon" @click.stop="openMenu">
+          <component v-bind:is="searchIcon"
+            class="icon">
+          </component>
         </div>
     </div>
 </template>
@@ -33,15 +37,15 @@
           type: Boolean,
           required: false
         },
+        searchIcon: {
+          type: [String],
+          required: false,
+          default: ''
+        },
         isMenu: {
           type: Boolean,
           required: false,
           default: true
-        },
-        isSearch: {
-          type: Boolean,
-          required: false,
-          default: false
         },
         right: {
           type: Boolean,
@@ -69,15 +73,15 @@
           required: false,
           default: true
         },
-        crossIcon: {
+        hasCrossIcon: {
           type: Boolean,
           required: false,
           default: true
-        },
-        searchIcon: {
-          type: Boolean,
-          required: false,
-          default: false
+        }
+      },
+      computed: {
+        hasSearchIcon() {
+          return this.searchIcon !== ''
         }
       },
       methods: {
@@ -98,7 +102,6 @@
               : '300px';
           });
         },
-
         closeMenu() {
           this.$emit('closeMenu');
           this.isSideBarOpen = false;
@@ -116,10 +119,13 @@
         },
         documentClick(e) {
           let element = document.querySelector('.bm-burger-button');
+          let srcBtnEle = document.querySelector('.bm-search-icon');
           let target = e.target;
           if (
             element !== target &&
             !element.contains(target) &&
+            srcBtnEle !== target &&
+            !srcBtnEle.contains(target) &&
             e.target.className !== 'bm-menu' &&
             this.isSideBarOpen
           ) {
