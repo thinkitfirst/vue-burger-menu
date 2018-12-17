@@ -9,8 +9,8 @@
             <slot name="searchHeader"></slot>
           </div>
           <nav class="bm-item-list">
-            <slot v-if="!isSearchMenu" name="menu"></slot>
-            <slot v-if="isSearchMenu" name="search"></slot>
+            <slot v-show="!isSearchMenu" name="menu"></slot>
+            <slot v-show="isSearchMenu" name="search"></slot>
           </nav>
         </div>
         <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
