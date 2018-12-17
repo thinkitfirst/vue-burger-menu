@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Menu v-bind="this.$attrs" @openMenu="push" @closeMenu="pull">
+        <Menu v-bind="this.$attrs" @openMenu="push" @openSearchMenu="searchPush" @closeMenu="pull" @closeSearchMenu="searchPull">
             <template slot="searchHeader">
               <slot name="searchHead"></slot>
             </template>
@@ -55,6 +55,32 @@
         },
         pull() {
           this.closeMenu()
+          document.querySelector('#page-wrap').style.transition =
+            'all 0.5s ease 0s';
+          document.querySelector('#page-wrap').style.transform = '';
+          document.body.removeAttribute('style');
+        },
+        searchPush() {
+          this.openSearchMenu()
+          let width = this.$attrs.width ? this.$attrs.width : '300px';
+
+          document.body.style.overflowX = 'hidden';
+
+          if (this.$attrs.right) {
+            document.querySelector(
+              '#page-wrap'
+            ).style.transform = `translate3d(-${width}, 0px, 0px )`;
+          } else {
+            document.querySelector(
+              '#page-wrap'
+            ).style.transform = `translate3d(${width}, 0px, 0px )`;
+          }
+
+          document.querySelector('#page-wrap').style.transition =
+            'all 0.5s ease 0s';
+        },
+        searchPull() {
+          this.closeSearchMenu()
           document.querySelector('#page-wrap').style.transition =
             'all 0.5s ease 0s';
           document.querySelector('#page-wrap').style.transform = '';
