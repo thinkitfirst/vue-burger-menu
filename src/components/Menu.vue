@@ -141,12 +141,10 @@
           }
         },
         documentClick(e) {
-          let element = document.querySelector('.bm-burger-button');
-          let searchEle = document.querySelector('.bm-search-icon');
           let target = e.target;
           if (
-            !this.closest(element, '.bm-item-list') &&
-            !this.closest(searchEle, '.bm-item-list') &&
+            !this.closest(target, '.bm-item-list') &&
+            !this.closest(target, '.bm-item-list') &&
             target.className !== 'bm-menu' &&
             this.isSideBarOpen
           ) {
