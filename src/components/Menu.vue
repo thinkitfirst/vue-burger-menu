@@ -5,7 +5,7 @@
           <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
           </span>
       </span>
-      <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu">
+      <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu" v-el:search-btn>
         <slot name="searchHeader"></slot>
       </div>
       <nav class="bm-item-list">
@@ -144,8 +144,6 @@
           let target = e.target;
           let eleName = target.nodeName;
           let triggers = ['a', 'option'];
-          console.log(target);
-          console.log('nodeName = ' + eleName);
           if (
           triggers.indexOf(eleName.toLowerCase()) > -1 ||
           (target.classList.contains('item') && 
