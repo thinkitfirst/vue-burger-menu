@@ -87,7 +87,7 @@
           document.body.removeAttribute('style');
         },
         searchPush() {
-          this.openSearchMenu()
+          this.openSearch()
           let width = this.$attrs.width ? this.$attrs.width : '300px';
 
           document.body.style.overflowX = 'hidden';
@@ -106,7 +106,7 @@
             'all 0.5s ease 0s';
         },
         searchPull() {
-          this.closeSearchMenu()
+          this.closeSearch()
           document.querySelector('#page-wrap').style.transition =
             'all 0.5s ease 0s';
           document.querySelector('#page-wrap').style.transform = '';
