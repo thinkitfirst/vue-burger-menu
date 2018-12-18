@@ -144,11 +144,14 @@
           let target = e.target;
           let eleName = target.nodeName;
           let triggers = ['a', 'option'];
-          if ((
-            !this.closest(target, '.bm-item-list') &&
-            !this.closest(target, '.bm-item-list') &&
-            target.className !== 'bm-menu'
-          ) || (triggers.indexOf(eleName.toLowerCase()) > -1 || (target.classList.contains('item') && target.parentNode.classList.contains('menu'))) && this.isSideBarOpen) {
+          if (
+          ((!this.closest(target, '.bm-item-list') && 
+          !this.closest(target, '.bm-item-list') && 
+          target.className !== 'bm-menu') || 
+          triggers.indexOf(eleName.toLowerCase()) > -1 || 
+          (target.classList.contains('item') && 
+          target.parentNode.classList.contains('menu'))) && 
+          this.isSideBarOpen) {
             this.closeMenu();
           }
         },
