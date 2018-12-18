@@ -5,7 +5,7 @@
           <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
           </span>
       </span>
-      <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu" v-el:search-btn>
+      <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu">
         <slot name="searchHeader"></slot>
       </div>
       <nav class="bm-item-list">
@@ -186,10 +186,12 @@
       },
       created: function() {
         document.addEventListener('click', this.documentClick);
+        document.addEventListener('click', this.closeSearchMenu);
       },
       destroyed: function() {
         document.removeEventListener('keyup', this.closeMenuOnEsc);
         document.removeEventListener('click', this.documentClick);
+        document.removeEventListener('click', this.closeSearchMenu);
       },
       watch: {
         isOpen: {
