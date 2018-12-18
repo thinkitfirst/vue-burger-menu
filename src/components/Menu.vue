@@ -1,27 +1,27 @@
 <template>
-    <div>
-        <div id="sideNav" class="bm-menu">
-          <span v-if="!isSearchMenu" class="bm-cross-button cross-style" @click.stop="closeMenu" :class="{ hidden: !hasCrossIcon }">
-              <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
-              </span>
+  <div>
+    <div id="sideNav" class="bm-menu">
+      <span v-if="!isSearchMenu" class="bm-cross-button cross-style" @click.stop="closeMenu" :class="{ hidden: !hasCrossIcon }">
+          <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
           </span>
-          <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu">
-            <slot name="searchHeader"></slot>
-          </div>
-          <nav class="bm-item-list">
-            <slot v-if="!isSearchMenu" name="menu"></slot>
-            <slot v-if="isSearchMenu" name="search"></slot>
-          </nav>
-        </div>
-        <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
-            <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
-        </div>
-        <div class="bm-search-icon" @click.stop="openSearchMenu" :class="{ hidden: !hasSearchIcon }">
-          <component v-bind:is="searchIcon"
-            class="icon">
-          </component>
-        </div>
+      </span>
+      <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu">
+        <slot name="searchHeader"></slot>
+      </div>
+      <nav class="bm-item-list">
+        <slot v-if="!isSearchMenu" name="menu"></slot>
+        <slot v-if="isSearchMenu" name="search"></slot>
+      </nav>
     </div>
+    <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
+        <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
+    </div>
+    <div class="bm-search-icon" @click.stop="openSearchMenu" :class="{ hidden: !hasSearchIcon }">
+      <component v-bind:is="searchIcon"
+        class="icon">
+      </component>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -144,6 +144,8 @@
           let target = e.target;
           let eleName = target.nodeName;
           let triggers = ['a', 'option'];
+          console.log(target);
+          console.log('nodeName = ' + eleName);
           if (
           triggers.indexOf(eleName.toLowerCase()) > -1 ||
           (target.classList.contains('item') && 
