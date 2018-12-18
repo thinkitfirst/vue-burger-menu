@@ -43,7 +43,7 @@
           type: Boolean,
           required: false
         },
-        isSearchOpen: {
+        closeSearchNav: {
           type: Boolean,
           required: false,
           default: false
@@ -214,15 +214,12 @@
             }
           }
         },
-        isSearchOpen: {
+        closeSearchNav: {
           deep: true,
           immediate: true,
-          handler(newValue, oldValue) {
-            if (!oldValue && newValue) {
-              this.openSearchMenu()
-            }
-            if (oldValue && !newValue) {
-              this.closeSearchMenu()
+          handler(newValue) {
+            if (newValue && this.isSideBarOpen) {
+              this.closeSearchMenu();
             }
           }
         },
