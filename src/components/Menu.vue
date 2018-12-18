@@ -34,9 +34,19 @@
         };
       },
       props: {
-        isOpen: {
+        triggerSearchClose: {
+          type: Boolean,
+          required: false,
+          default: false
+        },
+        isMenuOpen: {
           type: Boolean,
           required: false
+        },
+        isSearchOpen: {
+          type: Boolean,
+          required: false,
+          default: false
         },
         searchIcon: {
           type: [String],
@@ -186,15 +196,13 @@
       },
       created: function() {
         document.addEventListener('click', this.documentClick);
-        document.addEventListener('click', this.closeSearchMenu);
       },
       destroyed: function() {
         document.removeEventListener('keyup', this.closeMenuOnEsc);
         document.removeEventListener('click', this.documentClick);
-        document.removeEventListener('click', this.closeSearchMenu);
       },
       watch: {
-        isOpen: {
+        isMenuOpen: {
           deep: true,
           immediate: true,
           handler(newValue, oldValue) {
@@ -203,6 +211,18 @@
             }
             if (oldValue && !newValue) {
               this.closeMenu()
+            }
+          }
+        },
+        isSearchOpen: {
+          deep: true,
+          immediate: true,
+          handler(newValue, oldValue) {
+            if (!oldValue && newValue) {
+              this.openSearchMenu()
+            }
+            if (oldValue && !newValue) {
+              this.closeSearchMenu()
             }
           }
         },
