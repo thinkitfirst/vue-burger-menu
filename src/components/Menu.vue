@@ -148,7 +148,7 @@
             !this.closest(target, '.bm-item-list') &&
             !this.closest(target, '.bm-item-list') &&
             target.className !== 'bm-menu'
-          ) || (triggers.contains(eleName.toLowerCase()) || (target.classList.contains('item') && target.parentNode.classList.contains('menu'))) && this.isSideBarOpen) {
+          ) || (triggers.indexOf(eleName.toLowerCase()) > -1 || (target.classList.contains('item') && target.parentNode.classList.contains('menu'))) && this.isSideBarOpen) {
             this.closeMenu();
           }
         },
