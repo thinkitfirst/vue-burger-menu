@@ -163,7 +163,11 @@
           (target.className !== 'bm-menu' && 
           this.isSideBarOpen)
           ) {
-            this.closeMenu();
+            if (this.isSearchMenu) {
+              this.closeSearchMenu();
+            } else {
+              this.closeMenu();
+            }
           }
         },
         closest(el, selector) {
