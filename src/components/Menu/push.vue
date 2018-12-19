@@ -36,6 +36,7 @@
       watch: {
         closeSearchMenu(newValue, oldValue) {
           if (oldValue && !newValue) {
+            console.log('closeMenuHappening...')
             this.$refs.theMenu.closeSearchMenu()
           }
         },
