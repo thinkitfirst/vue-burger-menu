@@ -1,14 +1,5 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["vue-burger-menu"] = factory();
-	else
-		root["vue-burger-menu"] = factory();
-})((typeof self !== 'undefined' ? self : this), function() {
-return /******/ (function(modules) { // webpackBootstrap
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -1726,5 +1717,4 @@ scaleDown_component.options.__file = "scaleDown.vue"
 /***/ })
 
 /******/ })["default"];
-});
-//# sourceMappingURL=vue-burger-menu.umd.js.map
+//# sourceMappingURL=vue-burger-menu.common.js.map

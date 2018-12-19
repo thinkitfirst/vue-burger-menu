@@ -36,7 +36,6 @@
       watch: {
         closeSearchMenu(newValue, oldValue) {
           if (oldValue && !newValue) {
-            console.log('closeMenuHappening...')
             this.$refs.theMenu.closeSearchMenu()
           }
         },
@@ -55,11 +54,9 @@
         },
         openSearch () {
           this.$emit('openSearchMenu')
-          this.$refs.theMenu.openSearchMenu()
         },
         closeSearch () {
           this.$emit('closeSearchMenu')
-          this.$refs.theMenu.closeSearchMenu()
         },
         push() {
           this.openMenu()
