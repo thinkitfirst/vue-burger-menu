@@ -141,7 +141,6 @@
           this.isSideBarOpen = false;
           document.body.classList.remove('bm-overlay');
           document.getElementById('sideNav').style.width = '0px';
-          console.log('closeSearchMenu triggered within Menu.vue');
         },
         closeMenuOnEsc(e) {
           e = e || window.event;

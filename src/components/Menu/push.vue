@@ -35,7 +35,7 @@
       },
       watch: {
         closeSearchMenu(newValue, oldValue) {
-          if (oldValue && !newValue) {
+          if (!oldValue && newValue) {
             this.$refs.theMenu.closeSearchMenu()
           }
         },
