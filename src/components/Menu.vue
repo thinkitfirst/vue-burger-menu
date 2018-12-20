@@ -155,13 +155,10 @@
           let eleName = target.nodeName;
           let triggers = ['a', 'option'];
           if (
-          triggers.indexOf(eleName.toLowerCase()) > -1 ||
-          (target.classList.contains('item') && 
-          target.parentNode.classList.contains('menu')) ||
-          (!this.closest(target, '.bm-item-list') && 
-          !this.closest(target, '.bm-item-list')) && 
-          (target.className !== 'bm-menu' && 
-          this.isSideBarOpen)
+            triggers.indexOf(eleName.toLowerCase()) > -1 &&
+            !this.closest(target, '.bm-item-list') && 
+            target.className !== 'bm-menu' &&
+            this.isSideBarOpen
           ) {
             if (this.isSearchMenu) {
               this.closeSearchMenu();
