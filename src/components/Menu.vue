@@ -154,9 +154,9 @@
           let target = e.target;
           let eleName = target.nodeName;
           let triggers = ['a', 'option'];
+          let isTriggeredEle = triggers.indexOf(eleName.toLowerCase()) > -1 || triggers.indexOf(target.parentNode.nodeName.toLowerCase()) > -1;
           if (
-            triggers.indexOf(eleName.toLowerCase()) > -1 &&
-            !this.closest(target, '.bm-item-list') && 
+            (isTriggeredEle || !this.closest(target, '.bm-item-list')) && 
             target.className !== 'bm-menu' &&
             this.isSideBarOpen
           ) {
