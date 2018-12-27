@@ -1,6 +1,9 @@
 <template>
     <div>
         <Menu v-bind="this.$attrs" @openMenu="push" @openSearchMenu="searchPush" @closeMenu="pull" @closeSearchMenu="searchPull" ref="theMenu">
+            <template slot="menuHeader">
+              <slot name="menuHead"></slot>
+            </template>
             <template slot="searchHeader">
               <slot name="searchHead"></slot>
             </template>

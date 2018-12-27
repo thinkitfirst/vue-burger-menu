@@ -1,10 +1,9 @@
 <template>
   <div>
     <div id="sideNav" class="bm-menu">
-      <span v-if="!isSearchMenu" class="bm-cross-button cross-style" @click.stop="closeMenu" :class="{ hidden: !hasCrossIcon }">
-          <span v-for="(x, index) in 2" :key="x" class="bm-cross" :style="{ position: 'absolute', width: '3px', height: '14px',transform: index === 1 ? 'rotate(45deg)' : 'rotate(-45deg)'}">
-          </span>
-      </span>
+      <div v-if="!isSearchMenu" class="bm-close-button close-style" @click.stop="closeMenu" :class="{ hidden: !hasCrossIcon }">
+          <slot name="menuHeader"></slot>
+      </div>
       <div v-else class="bm-search-button search-style" @click.stop="closeSearchMenu">
         <slot name="searchHeader"></slot>
       </div>
@@ -14,7 +13,7 @@
       </nav>
     </div>
     <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
-        <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
+      <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
     </div>
     <div class="bm-search-icon" @click.stop="openSearchMenu" :class="{ hidden: !hasSearchIcon }">
       <component v-bind:is="searchIcon"
