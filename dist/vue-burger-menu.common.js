@@ -471,7 +471,7 @@ exports = module.exports = __webpack_require__("2350")(false);
 
 
 // module
-exports.push([module.i, "\nhtml{height:100%\n}\n.bm-burger-button{cursor:pointer;height:30px;left:36px;position:absolute;top:36px;width:36px\n}\n.bm-burger-button.hidden{display:none\n}\n.bm-burger-bars{background-color:#373a47\n}\n.line-style{height:20%;left:0;position:absolute;right:0\n}\n.cross-style{cursor:pointer;position:absolute;right:2px;top:12px\n}\n.bm-cross{background:#bdc3c7\n}\n.bm-cross-button{height:24px;width:24px\n}\n.bm-cross-button.hidden{display:none\n}\n.bm-menu{background-color:#3f3f41;height:100%;left:0;overflow-x:hidden;padding-top:60px;position:fixed;top:0;transition:.5s;width:0;z-index:1000\n}\n.bm-overlay{background:rgba(0,0,0,.3)\n}\n.bm-item-list{color:#b8b7ad;font-size:20px;margin-left:10%\n}\n.bm-item-list>*{display:flex;padding:.7em;text-decoration:none\n}\n.bm-item-list>*>span{color:#fff;font-weight:700;margin-left:10px\n}", ""]);
+exports.push([module.i, "\nhtml{height:100%\n}\n.bm-burger-button{cursor:pointer;height:30px;left:36px;position:absolute;top:36px;width:36px\n}\n.bm-burger-button.hidden{display:none\n}\n.bm-burger-bars{background-color:#373a47\n}\n.line-style{height:20%;left:0;position:absolute;right:0\n}\n.cross-style{cursor:pointer;position:absolute;right:2px;top:12px\n}\n.bm-cross{background:#bdc3c7\n}\n.bm-menu{background-color:#3f3f41;height:100%;left:0;overflow-x:hidden;padding-top:60px;position:fixed;top:0;transition:.5s;width:0;z-index:1000\n}\n.bm-overlay{background:rgba(0,0,0,.3)\n}\n.bm-item-list{color:#b8b7ad;font-size:20px;margin-left:10%\n}\n.bm-item-list>*{display:flex;padding:.7em;text-decoration:none\n}\n.bm-item-list>*>span{color:#fff;font-weight:700;margin-left:10px\n}", ""]);
 
 // exports
 
@@ -505,14 +505,15 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/Menu/slide.vue?vue&type=template&id=70eb7296&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9cdd6cc0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Menu.vue?vue&type=template&id=130917b4&
-var Menuvue_type_template_id_130917b4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"bm-menu",attrs:{"id":"sideNav"}},[(!_vm.isSearchMenu)?_c('div',{staticClass:"bm-close-button close-style",class:{ hidden: !_vm.hasCrossIcon },on:{"click":function($event){$event.stopPropagation();return _vm.closeMenu($event)}}},[_vm._t("menuHeader")],2):_c('div',{staticClass:"bm-search-button search-style",on:{"click":function($event){$event.stopPropagation();return _vm.closeSearchMenu($event)}}},[_vm._t("searchHeader")],2),_c('nav',{staticClass:"bm-item-list"},[(!_vm.isSearchMenu)?_vm._t("menu"):_vm._e(),(_vm.isSearchMenu)?_vm._t("search"):_vm._e()],2)]),_c('div',{staticClass:"bm-burger-button",class:{ hidden: !_vm.burgerIcon },on:{"click":function($event){$event.stopPropagation();return _vm.openMenu($event)}}},_vm._l((3),function(x,index){return _c('span',{key:index,staticClass:"bm-burger-bars line-style",style:({top:20 * (index * 2) + '%'})})})),_c('div',{staticClass:"bm-search-icon",class:{ hidden: !_vm.hasSearchIcon },on:{"click":function($event){$event.stopPropagation();return _vm.openSearchMenu($event)}}},[_c(_vm.searchIcon,{tag:"component",staticClass:"icon"})],1)])}
-var Menuvue_type_template_id_130917b4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9cdd6cc0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Menu.vue?vue&type=template&id=7c7e506c&
+var Menuvue_type_template_id_7c7e506c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"bm-menu",attrs:{"id":"sideNav"}},[(!_vm.isSearchMenu)?_c('div',{staticClass:"bm-close-button close-style",class:{ hidden: !_vm.hasCrossIcon },on:{"click":function($event){$event.stopPropagation();return _vm.closeMenu($event)}}},[_vm._t("menuHeader")],2):_c('div',{staticClass:"bm-search-button search-style",on:{"click":function($event){$event.stopPropagation();return _vm.closeSearchMenu($event)}}},[_vm._t("searchHeader")],2),_c('nav',{staticClass:"bm-item-list"},[(!_vm.isSearchMenu)?_vm._t("menu"):_vm._e(),(_vm.isSearchMenu)?_vm._t("search"):_vm._e()],2)]),_c('div',{staticClass:"bm-burger-button",class:{ hidden: _vm.isMainMenuOpen },on:{"click":function($event){$event.stopPropagation();return _vm.openMenu($event)}}},_vm._l((3),function(x,index){return _c('span',{key:index,staticClass:"bm-burger-bars line-style",style:({top:20 * (index * 2) + '%'})})})),_c('div',{staticClass:"bm-search-icon",class:{ hidden: _vm.isSearchMenuOpen },on:{"click":function($event){$event.stopPropagation();return _vm.openSearchMenu($event)}}},[_c(_vm.searchIcon,{tag:"component",staticClass:"icon"})],1)])}
+var Menuvue_type_template_id_7c7e506c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Menu.vue?vue&type=template&id=130917b4&
+// CONCATENATED MODULE: ./src/components/Menu.vue?vue&type=template&id=7c7e506c&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Menu.vue?vue&type=script&lang=js&
+//
 //
 //
 //
@@ -601,6 +602,12 @@ var Menuvue_type_template_id_130917b4_staticRenderFns = []
   computed: {
     hasSearchIcon: function hasSearchIcon() {
       return this.searchIcon !== '';
+    },
+    isMainMenuOpen: function isMainMenuOpen() {
+      return !this.burgerIcon || this.isSideBarOpen;
+    },
+    isSearchMenuOpen: function isSearchMenuOpen() {
+      return !this.hasSearchIcon || this.isSideBarOpen;
     }
   },
   methods: {
@@ -873,8 +880,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_Menuvue_type_script_lang_js_,
-  Menuvue_type_template_id_130917b4_render,
-  Menuvue_type_template_id_130917b4_staticRenderFns,
+  Menuvue_type_template_id_7c7e506c_render,
+  Menuvue_type_template_id_7c7e506c_staticRenderFns,
   false,
   null,
   null,

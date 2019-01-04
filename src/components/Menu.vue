@@ -12,14 +12,15 @@
         <slot v-if="isSearchMenu" name="search"></slot>
       </nav>
     </div>
-    <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: !burgerIcon }">
+    <div class="bm-burger-button" @click.stop="openMenu" :class="{ hidden: isMainMenuOpen }">
       <span class="bm-burger-bars line-style" :style="{top:20 * (index * 2) + '%'}" v-for="(x, index) in 3" :key="index"></span>
     </div>
-    <div class="bm-search-icon" @click.stop="openSearchMenu" :class="{ hidden: !hasSearchIcon }">
+    <div class="bm-search-icon" @click.stop="openSearchMenu" :class="{ hidden: isSearchMenuOpen }">
       <component v-bind:is="searchIcon"
         class="icon">
       </component>
     </div>
+
   </div>
 </template>
 
@@ -87,6 +88,12 @@
       computed: {
         hasSearchIcon() {
           return this.searchIcon !== '';
+        },
+        isMainMenuOpen() {
+          return !this.burgerIcon || this.isSideBarOpen;
+        },
+        isSearchMenuOpen() {
+          return !this.hasSearchIcon || this.isSideBarOpen;
         }
       },
       methods: {
@@ -283,13 +290,6 @@
     }
     .bm-cross {
       background: #bdc3c7;
-    }
-    .bm-cross-button {
-      height: 24px;
-      width: 24px;
-    }
-    .bm-cross-button.hidden {
-      display: none;
     }
     .bm-menu {
       height: 100%; /* 100% Full-height */
