@@ -34,6 +34,16 @@
           type: Boolean,
           required: false,
           default: false
+        },
+        closeMainMenu: {
+          type: Boolean,
+          required: false,
+          default: false
+        },
+        openMainMenu: {
+          type: Boolean,
+          required: false,
+          default: false
         }
       },
       watch: {
@@ -45,6 +55,16 @@
         openSearchMenu(newValue, oldValue) {
           if (!oldValue && newValue) {
             this.$refs.theMenu.openSearchMenu()
+          }
+        },
+        closeMainMenu(newValue, oldValue) {
+          if (!oldValue && newValue) {
+            this.$refs.theMenu.closeMenu()
+          }
+        },
+        openMainMenu(newValue, oldValue) {
+          if (!oldValue && newValue) {
+            this.$refs.theMenu.openMenu()
           }
         }
       },
